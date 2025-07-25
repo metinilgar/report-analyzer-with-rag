@@ -228,6 +228,7 @@ qdrant-data/
 # PostgreSQL local dumps
 *.sql
 *.dump
+!init.sql
 
 # Redis dumps
 *.rdb
