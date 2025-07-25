@@ -1,0 +1,408 @@
+# Report Analyzer with RAG - GitIgnore
+# Bu dosya tüm proje bileşenleri için geçerlidir
+
+# ========================================
+# Environment & Configuration Files
+# ========================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+*.env
+config.ini
+!config.ini.example
+!env.example
+
+# ========================================
+# Python (Backend & LightRAG)
+# ========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pipenv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ========================================
+# Node.js (Frontend)
+# ========================================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# ========================================
+# Docker
+# ========================================
+# Docker volumes (local development)
+.docker/
+docker-data/
+postgres-data/
+redis-data/
+neo4j-data/
+qdrant-data/
+
+# Docker logs
+*.log
+
+# ========================================
+# Database Files
+# ========================================
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# PostgreSQL local dumps
+*.sql
+*.dump
+
+# Redis dumps
+*.rdb
+
+# ========================================
+# Application Data & Uploads
+# ========================================
+# Backend uploads and documents
+backend/uploads/*
+backend/static/documents/*
+!backend/uploads/.gitkeep
+!backend/static/documents/.gitkeep
+
+# LightRAG data
+LightRAG/data/inputs/*
+LightRAG/data/rag_storage/*
+!LightRAG/data/inputs/.gitkeep
+!LightRAG/data/rag_storage/.gitkeep
+
+# Logs
+logs/
+*.log
+log/
+*.log.*
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Cache files
+.cache/
+cache/
+
+# ========================================
+# IDE & Editor Files
+# ========================================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ========================================
+# Operating System Files
+# ========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ========================================
+# Archive & Backup Files
+# ========================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*.backup
+*.old
+*.orig
+
+# ========================================
+# Security & Certificates
+# ========================================
+# Private keys
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Certificates
+*.crt
+*.cer
+
+# ========================================
+# Development & Testing
+# ========================================
+# Test files
+test-results/
+coverage/
+.coverage
+htmlcov/
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Profiling data
+*.prof
+
+# ========================================
+# Project Specific
+# ========================================
+# Custom scripts that might contain sensitive data
+scripts/local_*
+scripts/dev_*
+
+# Local development overrides
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Monitoring and performance data
+monitoring/
+metrics/
+
+# Custom configuration files
+config/local.*
+config/dev.* 
