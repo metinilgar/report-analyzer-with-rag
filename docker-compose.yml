@@ -1,0 +1,132 @@
+services:
+  redis:
+      image: redis:latest
+      container_name: redis
+      ports:
+        - "6379:6379"
+      volumes:
+        - redis_data:/data
+      restart: unless-stopped
+
+  qdrant:
+      image: qdrant/qdrant:latest
+      container_name: qdrant
+      ports:
+        - "6333:6333"
+        - "6334:6334"
+      volumes:
+        - qdrant_storage:/qdrant/storage
+      restart: unless-stopped
+
+  neo4j:
+      image: neo4j:latest
+      container_name: neo4j
+      environment:
+        - NEO4J_AUTH=neo4j/lightrag123  
+      ports:
+        - "7687:7687"  
+        - "7474:7474"  
+      volumes:
+        - neo4j_data:/data
+        - neo4j_logs:/logs
+        - neo4j_import:/import
+        - neo4j_plugins:/plugins
+      restart: unless-stopped
+
+  postgres:
+      image: ankane/pgvector:latest
+      container_name: postgres
+      restart: unless-stopped
+      environment:
+        POSTGRES_USER: lightrag
+        POSTGRES_PASSWORD: lightrag123
+        POSTGRES_DB: lightragdb
+      volumes:
+        - pg_data:/var/lib/postgresql/data
+        - ./LightRAG/init.sql:/docker-entrypoint-initdb.d/init.sql
+      ports:
+        - "5432:5432"
+
+  lightrag:
+    container_name: lightrag
+    image: ghcr.io/hkuds/lightrag:latest
+    build:
+      context: ./LightRAG
+      dockerfile: Dockerfile
+      tags:
+        - ghcr.io/hkuds/lightrag:latest
+    ports:
+      - "${PORT:-9621}:9621"
+    volumes:
+      - ./LightRAG/data/rag_storage:/app/data/rag_storage
+      - ./LightRAG/data/inputs:/app/data/inputs
+      - ./LightRAG/config.ini:/app/config.ini
+      - ./LightRAG/.env:/app/.env
+    env_file:
+      - ./LightRAG/.env
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - redis
+      - qdrant
+      - neo4j
+      - postgres
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+  postgres_backend:
+      image: ankane/pgvector:latest
+      container_name: postgres_backend
+      restart: unless-stopped
+      environment:
+        POSTGRES_USER: backend
+        POSTGRES_PASSWORD: backend123
+        POSTGRES_DB: backend_db
+      volumes:
+        - pg_backend_data:/var/lib/postgresql/data
+      ports:
+        - "5433:5432"  # dış erişim için 5433 kullanılabilir
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend   # backend Dockerfile'ın bu klasördeyse
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"        # Host 8000 portunu container 8000 portuna bağla
+    env_file:
+      - ./backend/.env     # backend için ayrı env dosyan varsa yolu buraya
+    volumes:
+      - ./backend/uploads:/app/uploads        # Dosya yükleme klasörü (isteğe bağlı)
+      - ./backend/static/documents:/app/static/documents  # Dokümanlar için (opsiyonel)
+    depends_on:
+      - postgres_backend   # Backend’in kendi Postgres servisi
+      - lightrag           # Eğer backend LightRAG API’sini kullanıyorsa
+    restart: unless-stopped
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+      - lightrag
+    restart: unless-stopped
+
+
+volumes:
+  redis_data:
+  qdrant_storage:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  neo4j_plugins:
+  pg_data:
+  pg_backend_data:
