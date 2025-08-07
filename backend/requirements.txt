@@ -1,0 +1,37 @@
+# FastAPI and ASGI server
+fastapi==0.115.14
+uvicorn[standard]==0.35.0
+
+# Database dependencies
+sqlalchemy==2.0.41
+psycopg2-binary==2.9.10
+alembic==1.16.3 
+
+# Data validation and serialization
+pydantic==2.11.7 
+pydantic-settings==2.10.1
+
+# HTTP client for LightRAG integration
+httpx==0.28.1
+
+# File handling and utilities
+python-multipart==0.0.20
+aiofiles==24.1.0 
+
+# Environment management
+python-dotenv==1.1.1
+
+# Development and testing dependencies
+pytest==8.4.1 
+pytest-asyncio==1.0.0
+httpx==0.28.1
+
+# Optional: For enhanced logging and monitoring
+structlog==25.4.0
+
+# Security
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+
+# Type hints
+typing-extensions==4.14.1
