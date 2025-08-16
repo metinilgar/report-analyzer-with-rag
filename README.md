@@ -2,6 +2,16 @@
 
 **Report Analyzer with RAG**, gelişmiş RAG (Retrieval-Augmented Generation) teknolojisi kullanarak dokümanlardan akıllı soru-cevap sistemi sağlayan kapsamlı bir web uygulamasıdır. [LightRAG](https://github.com/HKUDS/LightRAG) motor altyapısını kullanarak, yüklenen belgelerden bilgi çıkarımı yapabilir ve kullanıcılarla doğal dil ile etkileşim kurabilir.
 
+<div align="center">
+
+![Screenshot 3](https://github.com/user-attachments/assets/a18c4cf7-7c91-473b-9ffe-9b4c291867c3)
+
+![Screenshot 1](https://github.com/user-attachments/assets/49318ded-a610-4bdf-bf0e-a860778f678e)
+
+![Screenshot 2](https://github.com/user-attachments/assets/fe7dbb90-63c1-4672-9fa2-dab30eb5c69a)
+
+</div>
+
 ## 🏗️ Sistem Mimarisi
 
 Bu proje **mikroservis** mimarisini benimser ve şu ana bileşenlerden oluşur:
